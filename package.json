@@ -3,10 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "engines": {
+    "node": "10.x"
+  },
   "scripts": {
    "dev": "nodemon --exec babel-node ./src/index.js",
    "start": "node ./dist/index.js",
    "build": "npx babel src --out-dir dist --copy-files"
+ },
+ "author": {
+   "name": "Ibrahim Saliman Zainab",
+   "email": "ibrahim.saliman.zainab@gmail.com"
  },
   "dependencies": {
     "@babel/cli": "^7.13.0",
