@@ -1,0 +1,7 @@
+POST /verify/bvn
+Host: localhost:2002/
+Content-Type: application/json
+
+{
+	"bvn": "12345678901"
+}
