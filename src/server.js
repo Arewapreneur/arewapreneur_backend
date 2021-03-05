@@ -12,7 +12,8 @@ app.use(morgan('tiny'));
 
 app.use('/', endpoints.ping);
 app.use('/ping', endpoints.ping);
-app.use('/verify/bvn', endpoints.verifyBvn);
+app.use('/verify/bvn', endpoints.verifyBVN);
+app.use('/send/sms', endpoints.sendSMS)
 
 // Catch-all error handler
 app.use((err, req, res, next) => {

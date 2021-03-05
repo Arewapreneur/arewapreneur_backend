@@ -4,17 +4,17 @@
   "main": "index.js",
   "license": "MIT",
   "engines": {
-    "node": "10.x"
+    "node": "12.x"
   },
   "scripts": {
-   "dev": "nodemon --exec babel-node ./src/index.js",
-   "start": "node ./dist/index.js",
-   "build": "npx babel src --out-dir dist --copy-files"
- },
- "author": {
-   "name": "Ibrahim Saliman Zainab",
-   "email": "ibrahim.saliman.zainab@gmail.com"
- },
+    "dev": "nodemon --exec babel-node ./src/index.js",
+    "start": "node ./dist/index.js",
+    "build": "npx babel src --out-dir dist --copy-files"
+  },
+  "author": {
+    "name": "Ibrahim Saliman Zainab",
+    "email": "ibrahim.saliman.zainab@gmail.com"
+  },
   "dependencies": {
     "@babel/cli": "^7.13.0",
     "@babel/core": "^7.13.8",
@@ -28,6 +28,7 @@
     "express": "^4.17.1",
     "innovation-sandbox": "^1.3.1",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "request": "^2.88.2"
   }
 }

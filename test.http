@@ -1,7 +1,7 @@
-POST /verify/bvn
+POST /send/sms
 Host: localhost:2002/
 Content-Type: application/json
 
 {
-	"bvn": "12345678901"
+	"sms": "+2348059303261"
 }

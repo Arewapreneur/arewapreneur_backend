@@ -1,7 +1,9 @@
 const ping = require('./ping');
-const verifyBvn = require('./verifyBVN');
+const verifyBVN = require('./verifyBVN');
+const sendSMS = require('./sendSMS')
 
 module.exports = {
  ping,
- verifyBvn
+ verifyBVN,
+ sendSMS
 };
