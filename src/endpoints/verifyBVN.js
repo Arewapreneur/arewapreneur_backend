@@ -71,6 +71,7 @@ const { data: verification } = await verifyBVN({
  }
 };
 
+
 router.post('/', handleVerificationReq);
 
 module.exports = router;

@@ -1,7 +1,9 @@
-POST /send/sms
+GET /items/
 Host: localhost:2002/
 Content-Type: application/json
 
 {
-	"sms": "+2348059303261"
+	"name": "Electric Oven",
+	"price": "26000",
+	"image": "baker.jpg"
 }

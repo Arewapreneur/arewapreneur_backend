@@ -14,6 +14,7 @@ app.use('/', endpoints.ping);
 app.use('/ping', endpoints.ping);
 app.use('/verify/bvn', endpoints.verifyBVN);
 app.use('/send/sms', endpoints.sendSMS)
+app.use('/items', endpoints.items)
 
 // Catch-all error handler
 app.use((err, req, res, next) => {
@@ -22,5 +23,6 @@ app.use((err, req, res, next) => {
     message: err.message
   });
 });
+
 
 module.exports = app;
