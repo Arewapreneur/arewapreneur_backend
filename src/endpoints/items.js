@@ -1,5 +1,13 @@
 const router = require('express').Router()
+const cloudinary = require('cloudinary').v2
 const Item = require('../models/itemModel')
+
+// cloudinary configuration
+ cloudinary.config({
+   cloud_name: "zeeson-info-tech-and-innovations",
+   api_key: "268384663335849",
+   api_secret: "wYgxHd1Wy41b-kx599fLMCcFRXQ"
+ });
 
   // get all items
 const getItems = (req, res, next) => {
@@ -16,7 +24,6 @@ const postItems =  async (req, res) => {
         price,
         image
     })
-
     newItem
     .save()
     .then((items) =>{
