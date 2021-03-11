@@ -1,6 +1,6 @@
-
 const express = require('express')
 const router = express.Router()
+const BvnDetails = require('../models/bvnDetails')
 
 const { nibss } = require('innovation-sandbox');
 
@@ -46,8 +46,7 @@ const verifyBVN = async (data) => {
 
 const handleVerificationReq = async (req, res) => {
  // TODO validate the bvn input from the client
- const { bvn } = req.body;
-
+ let { bvn } = req.body;
  try {
    // TODO use imported NIBSS SDK to verify the bvn input
    const { ivkey, aes_key: aesKey, password } = await getNIBSSCredentials();
@@ -56,13 +55,20 @@ const { data: verification } = await verifyBVN({
   ivkey,
   password,
   aes_key: aesKey
-});
-
+})
    const message = verification ? 'verification completed' : `BVN ${bvn} could not be found / verified`;
    return res.status(200).json({
      message,
      verification
-   });
+   })
+    .then(() => {
+
+     const newBvn =  new BvnDetails({
+      bvn
+     })
+     newBvn
+     .save()
+  }).catc(err => res.json(err))
  } catch (error) {
    console.log(error);
    res.status(500).json({
@@ -70,8 +76,44 @@ const { data: verification } = await verifyBVN({
    });
  }
 };
+const postDetails = (req, res) => {
+  const { bvn, FirstName, MiddleName, LastName,
+  DateOfBirth,
+  PhoneNumber,
+  RegistrationDate,
+  EnrollmentBank,
+  EnrollmentBranch,
+  WatchListed } = req.body
+  const newDetails = new BvnDetails({
+    bvn, FirstName, MiddleName, LastName,
+    DateOfBirth,
+    PhoneNumber,
+    RegistrationDate,
+    EnrollmentBank,
+    EnrollmentBranch,
+    WatchListed
+  })
+  newDetails
+  .save()
+  .then((details) =>{
+      return res.status(200).json({
+        message: "Item Uploaded Successfully!",
+        details
+      });
+  })
+  .catch((error) =>{
+      console.log(error);
+  });
 
+}
+const getDetails = (req, res) => {
+  BvnDetails.find()
+  .then(details => res.status(200).json(details))
+  .catch(err => res.status(400).json("Error getting Interns"))
+}
 
-router.post('/', handleVerificationReq);
+router.post('/', handleVerificationReq)
+router.get('/', getDetails)
+router.post('/details', postDetails)
 
 module.exports = router;

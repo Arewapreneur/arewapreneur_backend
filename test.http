@@ -1,9 +1,16 @@
-GET /items/
-Host: localhost:2002/
+POST /verify/bvn/details
+Host: localhost:2003/
 Content-Type: application/json
 
 {
-	"name": "Electric Oven",
-	"price": "26000",
-	"image": "baker.jpg"
+	"bvn":"12345678901",
+  "FirstName":"Uchenna",
+  "MiddleName":"Chijioke",
+  "LastName":"Nwanyanwu",
+  "DateOfBirth":"22-Oct-1970",
+  "PhoneNumber":"07033333333",
+  "RegistrationDate":"16-Nov-2014",
+  "EnrollmentBank":"900",
+  "EnrollmentBranch":"Victoria Island",
+  "WatchListed":"NO"
 }
